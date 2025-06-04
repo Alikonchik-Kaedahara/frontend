@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Добавить недвижимость · MyHome</title>
+
+  <!-- Google Fonts and Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --accent: #b55400;
+      --accent-dark: #8d4200;
+      --bg: #f5f7fa;
+      --panel: #ffffff;
+      --border: #e5e7eb;
+      --text: #111827;
+      --text-light: #6b7280;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .wrapper {
+      max-width: 1000px;
+      margin: 30px auto;
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgb(0 0 0 / .05);
+    }
+
+    .two-up {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media(min-width:600px) {
+      .two-up {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    label {
+      font-size: .9rem;
+      font-weight: 500;
+      display: block;
+      margin-bottom: .4rem;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      padding: .75rem 1rem;
+      font-size: .95rem;
+      border-radius: var(--radius);
+      transition: border-color .25s, box-shadow .25s;
+      resize: vertical;
+      background: #fff;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgb(181 84 0 / .15);
+    }
+
+    .checkbox-row {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+      font-size: .88rem;
+      color: var(--text-light);
+    }
+
+    .checkbox-row input {
+      accent-color: var(--accent);
+    }
+
+    .btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      padding: .85rem 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .25s;
+      margin-top: 1rem;
+      width: 100%;
+    }
+
+    .btn:hover {
+      background: var(--accent-dark);
+    }
+
+    .upload-box {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      background: #fafafa;
+      padding: 1.25rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color .25s;
+      width: 100%;
+      margin-bottom: 1.25rem;
+    }
+
+    .upload-box:hover {
+      border-color: var(--accent);
+    }
+
+    .upload-box svg {
+      width: 48px;
+      height: 48px;
+      stroke: var(--accent);
+      margin: 0 auto .75rem auto;
+      display: block;
+    }
+
+    .upload-box p {
+      color: var(--text-light);
+      font-size: .9rem;
+    }
+
+    .upload-box input {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <nav class="navbar nav-1">
+      <section class="flex">
+        <a href="home.html" class="logo"><i class="fas fa-house"></i>MyHome</a>
+        <ul>
+          <li><a href="post.html">post property<i class="fas fa-paper-plane"></i></a></li>
+        </ul>
+      </section>
+    </nav>
+
+    <nav class="navbar nav-2">
+      <section class="flex">
+        <div id="menu-btn" class="fas fa-bars"></div>
+
+        <div class="menu">
+          <ul>
+            <li><a href="home.html#listings">buy</a></li>
+            <li><a href="#">sell<i class="fas fa-angle-down"></i></a>
+              <ul>
+                <li><a href="post.html">post property</a></li>
+                <li><a href="dashboard.html">dashboard</a></li>
+              </ul>
+            </li>
+            <li><a href="#">help<i class="fas fa-angle-down"></i></a>
+              <ul>
+                <li><a href="about.html">about us</a></li>
+                <li><a href="contact.html">contact us</a></li>
+                <li><a href="contact.html#faq">FAQ</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <ul>
+          <li><a href="saved.html">saved <i class="far fa-heart"></i></a></li>
+          <li><a href="#">account <i class="fas fa-angle-down"></i></a>
+            <ul>
+              <li><a href="login.html">login</a></li>
+              <li><a href="register.html">register</a></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </nav>
+  </header>
+
+  <div class="wrapper">
+    <form>
+
+      <div style="margin-bottom:1.25rem">
+        <label for="title">Заголовок объявления *</label>
+        <input type="text" id="title" placeholder="Напр. 3-комнатная квартира в центре" required>
+      </div>
+
+      <div class="two-up" style="margin-bottom:1.25rem">
+        <div>
+          <label for="price">Цена (₽) *</label>
+          <input type="number" id="price" placeholder="₽" required>
+        </div>
+        <div>
+          <label for="size">Площадь (м²)</label>
+          <input type="number" id="size" placeholder="Напр. 75">
+        </div>
+      </div>
+
+      <div style="margin-bottom:1.25rem">
+        <label for="address">Адрес *</label>
+        <input type="text" id="address" placeholder="Улица, дом, корпус" required>
+      </div>
+
+      <div class="two-up" style="margin-bottom:1.25rem">
+        <div>
+          <label for="city">Город *</label>
+          <input type="text" id="city" placeholder="Напр. Алматы" required>
+        </div>
+        <div>
+          <label for="country">Страна</label>
+          <input type="text" id="country" placeholder="Казахстан">
+        </div>
+      </div>
+
+      <div class="two-up" style="margin-bottom:1.25rem">
+        <div>
+          <label for="beds">Спальни</label>
+          <select id="beds">
+            <option value="">—</option>
+            <option>1</option><option>2</option><option>3</option><option>4+</option>
+          </select>
+        </div>
+        <div>
+          <label for="baths">Ванные</label>
+          <select id="baths">
+            <option value="">—</option>
+            <option>1</option><option>2</option><option>3+</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="margin-bottom:1rem">
+        <label>Удобства</label>
+        <div class="checkbox-row"><input type="checkbox" id="parking"><label for="parking">Парковка</label></div>
+        <div class="checkbox-row"><input type="checkbox" id="balcony"><label for="balcony">Балкон</label></div>
+        <div class="checkbox-row"><input type="checkbox" id="lift"><label for="lift">Лифт</label></div>
+      </div>
+
+      <!-- Image Upload Section -->
+      <div>
+        <label for="images">Фотографии объекта *</label>
+        <label class="upload-box">
+          <svg fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M12 5v14M5 12h14" />
+          </svg>
+          <p>Нажмите или перетащите<br>изображения сюда</p>
+          <input type="file" id="images" accept="image/*" multiple>
+        </label>
+      </div>
+
+      <div style="margin-bottom:1.25rem">
+        <label for="description">Описание объекта *</label>
+        <textarea id="description" rows="6"
+          placeholder="Расскажите подробно о планировке, ремонте, инфраструктуре..."></textarea>
+      </div>
+
+      <button type="submit" class="btn">Опубликовать</button>
+    </form>
+  </div>
+
+</body>
+</html>
+
+
+
+
